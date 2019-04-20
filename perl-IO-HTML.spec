@@ -4,10 +4,10 @@
 #
 Name     : perl-IO-HTML
 Version  : 1.001
-Release  : 26
+Release  : 27
 URL      : http://search.cpan.org/CPAN/authors/id/C/CJ/CJM/IO-HTML-1.001.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/C/CJ/CJM/IO-HTML-1.001.tar.gz
-Summary  : 'Open an HTML file with automatic charset detection'
+Summary  : Open an HTML file with automatic charset detection
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-IO-HTML-license = %{version}-%{release}
@@ -23,6 +23,7 @@ HTML::Parser or a related module (or just read it yourself).
 Summary: dev components for the perl-IO-HTML package.
 Group: Development
 Provides: perl-IO-HTML-devel = %{version}-%{release}
+Requires: perl-IO-HTML = %{version}-%{release}
 
 %description dev
 dev components for the perl-IO-HTML package.
