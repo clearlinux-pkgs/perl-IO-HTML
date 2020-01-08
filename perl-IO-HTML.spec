@@ -4,13 +4,14 @@
 #
 Name     : perl-IO-HTML
 Version  : 1.001
-Release  : 29
+Release  : 30
 URL      : http://search.cpan.org/CPAN/authors/id/C/CJ/CJM/IO-HTML-1.001.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/C/CJ/CJM/IO-HTML-1.001.tar.gz
-Summary  : Open an HTML file with automatic charset detection
+Summary  : 'Open an HTML file with automatic charset detection'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-IO-HTML-license = %{version}-%{release}
+Requires: perl-IO-HTML-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -37,14 +38,24 @@ Group: Default
 license components for the perl-IO-HTML package.
 
 
+%package perl
+Summary: perl components for the perl-IO-HTML package.
+Group: Default
+Requires: perl-IO-HTML = %{version}-%{release}
+
+%description perl
+perl components for the perl-IO-HTML package.
+
+
 %prep
 %setup -q -n IO-HTML-1.001
+cd %{_builddir}/IO-HTML-1.001
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -54,7 +65,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -63,7 +74,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-IO-HTML
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-IO-HTML/LICENSE
+cp %{_builddir}/IO-HTML-1.001/LICENSE %{buildroot}/usr/share/package-licenses/perl-IO-HTML/ca1f55baa6dfa1bdd7932a90abbe4a62c01eec67
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -76,7 +87,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/IO/HTML.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -84,4 +94,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-IO-HTML/LICENSE
+/usr/share/package-licenses/perl-IO-HTML/ca1f55baa6dfa1bdd7932a90abbe4a62c01eec67
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/IO/HTML.pm
