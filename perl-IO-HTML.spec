@@ -4,7 +4,7 @@
 #
 Name     : perl-IO-HTML
 Version  : 1.001
-Release  : 30
+Release  : 31
 URL      : http://search.cpan.org/CPAN/authors/id/C/CJ/CJM/IO-HTML-1.001.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/C/CJ/CJM/IO-HTML-1.001.tar.gz
 Summary  : 'Open an HTML file with automatic charset detection'
@@ -98,4 +98,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/IO/HTML.pm
+/usr/lib/perl5/vendor_perl/5.30.2/IO/HTML.pm
