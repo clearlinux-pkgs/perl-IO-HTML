@@ -4,12 +4,13 @@
 #
 Name     : perl-IO-HTML
 Version  : 1.004
-Release  : 33
+Release  : 34
 URL      : https://cpan.metacpan.org/authors/id/C/CJ/CJM/IO-HTML-1.004.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/C/CJ/CJM/IO-HTML-1.004.tar.gz
 Summary  : 'Open an HTML file with automatic charset detection'
 Group    : Development/Tools
-License  : Artistic-1.0-Perl
+License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
+Requires: perl-IO-HTML-license = %{version}-%{release}
 Requires: perl-IO-HTML-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
@@ -27,6 +28,14 @@ Requires: perl-IO-HTML = %{version}-%{release}
 
 %description dev
 dev components for the perl-IO-HTML package.
+
+
+%package license
+Summary: license components for the perl-IO-HTML package.
+Group: Default
+
+%description license
+license components for the perl-IO-HTML package.
 
 
 %package perl
@@ -64,6 +73,8 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-IO-HTML
+cp %{_builddir}/IO-HTML-1.004/LICENSE %{buildroot}/usr/share/package-licenses/perl-IO-HTML/e2aa9543be154771b883c9ce3bce00d3add08d5a
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -81,6 +92,10 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 %defattr(-,root,root,-)
 /usr/share/man/man3/IO::HTML.3
 
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-IO-HTML/e2aa9543be154771b883c9ce3bce00d3add08d5a
+
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.3/IO/HTML.pm
+/usr/lib/perl5/vendor_perl/5.32.1/IO/HTML.pm
