@@ -7,7 +7,7 @@
 #
 Name     : perl-IO-HTML
 Version  : 1.004
-Release  : 49
+Release  : 50
 URL      : https://cpan.metacpan.org/authors/id/C/CJ/CJM/IO-HTML-1.004.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/C/CJ/CJM/IO-HTML-1.004.tar.gz
 Summary  : 'Open an HTML file with automatic charset detection'
